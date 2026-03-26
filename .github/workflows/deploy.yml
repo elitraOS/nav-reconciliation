@@ -16,7 +16,7 @@ env:
   ECS_CLUSTER: "nav-reconciliation-production"
   ECS_SERVICE: "nav-reconciliation-production"
   ECS_TASK_FAMILY: "nav-reconciliation-production"
-  DEPLOYMENT_URL: ""
+  DEPLOYMENT_URL: "http://nav-reconciliation-production-1316765472.us-east-1.elb.amazonaws.com"
 
 jobs:
   test:
@@ -143,7 +143,7 @@ jobs:
 
       - name: Smoke check deployment
         env:
-          DEPLOYMENT_URL: ""
+          DEPLOYMENT_URL: "http://nav-reconciliation-production-1316765472.us-east-1.elb.amazonaws.com"
         run: |
           echo "Checking $DEPLOYMENT_URL..."
           for i in 1 2 3 4 5; do

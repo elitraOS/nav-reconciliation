@@ -1,13 +1,3 @@
-data "aws_ecr_image" "frontend" {
-  repository_name = aws_ecr_repository.main.name
-  image_tag       = "frontend-latest"
-}
-
-data "aws_ecr_image" "backend" {
-  repository_name = aws_ecr_repository.main.name
-  image_tag       = "backend-latest"
-}
-
 resource "aws_ecr_repository" "main" {
   name                 = local.name_prefix
   image_tag_mutability = "MUTABLE"
@@ -71,7 +61,7 @@ resource "aws_ecs_task_definition" "main" {
   container_definitions = jsonencode([
     {
       name      = "backend"
-      image     = "${aws_ecr_repository.main.repository_url}@${data.aws_ecr_image.backend.image_digest}"
+      image     = var.backend_image
       essential = true
       environment = [
         { name = "RPC_URL",       value = "https://evm-rpc.sei-apis.com" },
@@ -95,7 +85,7 @@ resource "aws_ecs_task_definition" "main" {
     },
     {
       name      = "frontend"
-      image     = "${aws_ecr_repository.main.repository_url}@${data.aws_ecr_image.frontend.image_digest}"
+      image     = var.frontend_image
       essential = true
       portMappings = [
         {
@@ -134,7 +124,7 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "frontend" {
-  name        = "gagpt-prod-fe"
+  name        = "nav-rec-prod-fe"
   port        = var.frontend_port
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
