@@ -86,7 +86,7 @@ data "aws_iam_policy_document" "github_actions_assume" {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
       # Restrict to your org/repo — update the repo path as needed
-      values = ["repo:elitraOS/GAGPT-vault-attacker:ref:refs/heads/main"]
+      values = ["repo:elitraOS/nav-reconciliation:ref:refs/heads/main"]
     }
     condition {
       test     = "StringEquals"
