@@ -1,0 +1,5 @@
+aws_region     = "us-east-1"
+app_name       = "nav-reconciliation"
+environment    = "production"
+backend_image  = "692859939200.dkr.ecr.us-east-1.amazonaws.com/nav-reconciliation-production:backend-latest"
+frontend_image = "692859939200.dkr.ecr.us-east-1.amazonaws.com/nav-reconciliation-production:frontend-latest"
