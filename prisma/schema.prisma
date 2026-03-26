@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NavSnapshot {
+  id           String   @id @default(cuid())
+  vaultAddress String   @map("vault_address")
+  blockNumber  BigInt   @map("block_number")
+  timestamp    BigInt
+  totalNav     BigInt   @map("total_nav")
+  sharePrice   BigInt   @map("share_price")
+  totalSupply  BigInt   @map("total_supply")
+  totalAssets  BigInt   @map("total_assets")
+  finalized    Boolean  @default(false)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  balanceSnapshots BalanceSnapshot[]
+
+  @@unique([vaultAddress, blockNumber], name: "vault_block_unique")
+  @@map("nav_snapshots")
+}
+
+model BalanceSnapshot {
+  id            String   @id @default(cuid())
+  navSnapshotId String   @map("nav_snapshot_id")
+  vaultAddress  String   @map("vault_address")
+  protocol      String
+  chain         String
+  blockNumber   BigInt   @map("block_number")
+  timestamp     BigInt
+  rawValue      BigInt   @map("raw_value")
+  tokenAddress  String   @map("token_address")
+  tokenDecimals Int      @map("token_decimals")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  navSnapshot NavSnapshot @relation(fields: [navSnapshotId], references: [id])
+
+  @@map("balance_snapshots")
+}
+
+model VaultRegistry {
+  id            String   @id @default(cuid())
+  vaultAddress  String   @map("vault_address")
+  protocol      String
+  chain         String
+  allocationBps Int      @map("allocation_bps")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@unique([vaultAddress, protocol, chain], name: "vault_protocol_chain_unique")
+  @@map("vault_registry")
+}
+
+model JobRecord {
+  id           String   @id
+  vaultAddress String   @map("vault_address")
+  blockNumber  BigInt   @map("block_number")
+  status       String   @default("pending")
+  errorMessage String?  @map("error_message")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("job_records")
+}

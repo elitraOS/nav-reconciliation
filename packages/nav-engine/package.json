@@ -1,0 +1,22 @@
+{
+  "name": "@nav/nav-engine",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nav/injectors": "workspace:*",
+    "@nav/normalizer": "workspace:*",
+    "@nav/shared": "workspace:*",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
