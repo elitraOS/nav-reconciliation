@@ -1,0 +1,4 @@
+
+> @nav-reconciliation/registry@0.0.0 typecheck /home/kien6034/duvbell/playground/nav-reconciliation/packages/registry
+> tsc --noEmit
+

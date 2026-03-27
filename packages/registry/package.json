@@ -1,0 +1,23 @@
+{
+  "name": "@nav-reconciliation/registry",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@bgd-labs/aave-address-book": "^4.44.22",
+    "@nav-reconciliation/shared": "file:../shared",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.2"
+  }
+}
