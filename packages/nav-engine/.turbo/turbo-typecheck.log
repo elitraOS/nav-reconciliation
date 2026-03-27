@@ -1,0 +1,4 @@
+
+> @nav-reconciliation/nav-engine@0.0.1 typecheck /home/kien6034/duvbell/playground/nav-reconciliation/packages/nav-engine
+> tsc --noEmit
+
