@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "test": "vitest run",
     "test:integration": "vitest run --config ../../vitest.config.integration.ts",
     "typecheck": "tsc --noEmit"
   },
@@ -11,11 +13,17 @@
     "@nav-reconciliation/nav-engine": "workspace:*",
     "@nav-reconciliation/normalizer": "workspace:*",
     "@nav-reconciliation/registry": "workspace:*",
-    "@nav-reconciliation/shared": "workspace:*"
+    "@nav-reconciliation/shared": "workspace:*",
+    "@prisma/client": "^5.0.0",
+    "bullmq": "^5.0.0",
+    "fastify": "^4.0.0",
+    "ioredis": "^5.0.0",
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "dotenv": "^16.0.0",
+    "prisma": "^5.0.0",
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
   }

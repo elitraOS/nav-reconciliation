@@ -1,0 +1,32 @@
+// Prisma schema for nav-reconciliation
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../apps/api/node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NavSnapshot {
+  id                      String   @id @default(cuid())
+  vaultAddress            String
+  blockNumber             String
+  recommendedNav          String
+  currentOnChainNav       String
+  delta                   String
+  deltaBps                String
+  breakdown               Json
+  pendingDeposits         String
+  pendingRedemptions      String
+  pendingRedemptionShares String
+  confidence              String
+  calculatedAt            String
+  createdAt               DateTime @default(now())
+
+  @@index([vaultAddress])
+  @@index([vaultAddress, createdAt])
+}
