@@ -1,0 +1,23 @@
+{
+  "name": "@nav-reconciliation/injectors",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@bgd-labs/aave-address-book": "^3.0.0",
+    "@nav-reconciliation/shared": "file:../shared",
+    "viem": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
