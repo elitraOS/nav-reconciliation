@@ -1,0 +1,27 @@
+{
+  "name": "@nav-reconciliation/api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nav-reconciliation/shared": "workspace:*",
+    "@nav-reconciliation/nav-engine": "workspace:*",
+    "@prisma/client": "^5.0.0",
+    "bullmq": "^5.0.0",
+    "fastify": "^4.0.0",
+    "ioredis": "^5.0.0",
+    "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0",
+    "prisma": "^5.0.0"
+  }
+}
