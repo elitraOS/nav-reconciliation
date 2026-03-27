@@ -1,0 +1,22 @@
+{
+  "name": "@nav-reconciliation/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test:integration": "vitest run --config ../../vitest.config.integration.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nav-reconciliation/injectors": "workspace:*",
+    "@nav-reconciliation/nav-engine": "workspace:*",
+    "@nav-reconciliation/normalizer": "workspace:*",
+    "@nav-reconciliation/registry": "workspace:*",
+    "@nav-reconciliation/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
