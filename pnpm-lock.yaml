@@ -11,6 +11,9 @@ importers:
       '@types/node':
         specifier: ^20.0.0
         version: 20.19.37
+      dotenv:
+        specifier: ^16.0.0
+        version: 16.6.1
       prisma:
         specifier: ^5.0.0
         version: 5.22.0
@@ -20,6 +23,40 @@ importers:
       typescript:
         specifier: ^5.4.0
         version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.37)
+
+  apps/api:
+    dependencies:
+      '@nav-reconciliation/injectors':
+        specifier: workspace:*
+        version: link:../../packages/injectors
+      '@nav-reconciliation/nav-engine':
+        specifier: workspace:*
+        version: link:../../packages/nav-engine
+      '@nav-reconciliation/normalizer':
+        specifier: workspace:*
+        version: link:../../packages/normalizer
+      '@nav-reconciliation/registry':
+        specifier: workspace:*
+        version: link:../../packages/registry
+      '@nav-reconciliation/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.37
+      dotenv:
+        specifier: ^16.0.0
+        version: 16.6.1
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.37)
 
   apps/api:
     dependencies:
@@ -742,6 +779,10 @@ packages:
   diff-sequences@29.6.3:
     resolution: {integrity: sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
 
   es-module-lexer@2.0.0:
     resolution: {integrity: sha512-5POEcUuZybH7IdmGsD8wlf0AI55wMecM9rVBTI/qEAy2c1kTOm3DjFYjrBdI2K3BaJjJYfYFeRtM0t9ssnRuxw==}
@@ -1738,6 +1779,8 @@ snapshots:
     optional: true
 
   diff-sequences@29.6.3: {}
+
+  dotenv@16.6.1: {}
 
   es-module-lexer@2.0.0: {}
 
