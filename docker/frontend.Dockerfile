@@ -11,7 +11,7 @@ RUN pnpm install --frozen-lockfile
 
 # Build
 FROM deps AS build
-COPY tsconfig.base.json ./
+COPY tsconfig.base.json turbo.json ./
 COPY packages/shared/ packages/shared/
 COPY apps/frontend/ apps/frontend/
 RUN pnpm turbo run build --filter=@nav-reconciliation/frontend
