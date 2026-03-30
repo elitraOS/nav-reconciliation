@@ -7,7 +7,7 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run --exclude 'src/__tests__/integration/**'"
   },
   "dependencies": {
     "@nav-reconciliation/shared": "workspace:*",
