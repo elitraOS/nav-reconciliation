@@ -21,7 +21,9 @@ FROM base AS runner
 ENV NODE_ENV=production
 COPY --from=build /app/apps/frontend/.next/standalone ./
 COPY --from=build /app/apps/frontend/.next/static ./apps/frontend/.next/static
-COPY --from=build /app/apps/frontend/public ./apps/frontend/public
+# Copy public assets if they exist
+RUN mkdir -p /app/apps/frontend/public
+COPY --from=build /app/apps/frontend/publi[c] ./apps/frontend/public/
 
 WORKDIR /app/apps/frontend
 EXPOSE 3000
