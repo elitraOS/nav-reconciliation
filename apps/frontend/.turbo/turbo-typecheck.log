@@ -1,0 +1,4 @@
+
+> @nav-reconciliation/frontend@0.1.0 typecheck /home/kien6034/duvbell/playground/nav-reconciliation/apps/frontend
+> tsc --noEmit
+

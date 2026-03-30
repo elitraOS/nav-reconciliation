@@ -280,3 +280,54 @@ flowchart TD
 **Classification flow:** Rules engine attempts classification first. Known patterns (standard deposits, withdrawals, fee events) get classified deterministically. Unrecognized or ambiguous events fall through to AI classifier, which reasons through the raw event with full vault context and produces a category + auditable reasoning chain. Low-confidence AI classifications get flagged for human review.
 
 **Scope:** multi-vault, AI-assisted transaction classification, fee decomposition, lot tracking, PnL attribution, audit-ready exports.
+
+---
+
+## Development Workflow — AI Agent Pipeline
+
+Features for this project are shipped via the autonomous `my_crew` agent pipeline. Do not edit code directly — use the GitHub issue → label workflow.
+
+### State Machine
+
+```
+ai-ready
+  └─→ [Design Crew]      writes system design to AGENTS.md, posts summary on issue
+        └─→ ai-design-posted
+              └─→ (human: design-approved)
+                    └─→ [Planning Crew]   creates sub-issues, dependency graph, technical design
+                          └─→ ai-in-progress
+                                └─→ (human: plan-approved)
+                                      └─→ [Build Crew]   writes code, opens PR per sub-issue
+                                            └─→ ai-review
+                                                  └─→ (human: merge PR)
+                                                        └─→ [Ship Crew]  posts release summary
+                                                              └─→ ai-done
+
+Special states:
+  human-in-progress  →  AI self-assigns + tracks issue but does not build
+  ai-blocked         →  AI posted a clarifying question; resumes on next poll after human answers
+```
+
+### How to Request a Feature
+
+1. Open a GitHub issue describing the feature
+2. Add label `ai-ready`
+3. Run the crew: `cd my_crew && crewai run` (or let it poll)
+4. Review the system design appended to `AGENTS.md` and posted on the issue → add `design-approved`
+5. Review the task breakdown plan posted as a GitHub comment → add `plan-approved`
+6. Review and merge the PR opened by the Build Crew
+
+### Label Reference
+
+| Label | Set by | Meaning |
+|---|---|---|
+| `ai-ready` | Human | Issue ready for AI |
+| `ai-design-posted` | Design Crew | System design in AGENTS.md, awaiting human approval |
+| `design-approved` | Human | Proceed to sub-task breakdown |
+| `ai-in-progress` | Planning Crew | Sub-tasks created, awaiting `plan-approved` |
+| `ai-revise-plan` | Human | Request revised plan with feedback comment |
+| `plan-approved` | Human | Proceed to build |
+| `ai-review` | Build Crew | PR open, awaiting human review |
+| `ai-done` | Ship Crew | Shipped |
+| `human-in-progress` | Human | Human took over; AI tracks but does not build |
+| `ai-blocked` | Build Crew | AI posted a clarifying question; waiting for answer |
