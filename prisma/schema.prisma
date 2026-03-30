@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NavSnapshot {
+  id                     String   @id @default(cuid())
+  vaultAddress           String
+  recommendedNav         String
+  currentOnChainNav      String
+  delta                  String
+  deltaBps               String
+  pendingDeposits        String
+  pendingRedemptions     String
+  pendingRedemptionShares String
+  confidence             String
+  blockNumber            String
+  calculatedAt           String
+  breakdown              Json
+  createdAt              DateTime @default(now())
+
+  @@index([vaultAddress])
+  @@index([vaultAddress, createdAt])
+}

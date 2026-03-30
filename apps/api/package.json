@@ -1,22 +1,27 @@
 {
   "name": "@nav-reconciliation/api",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
   "scripts": {
-    "test:integration": "vitest run --config ../../vitest.config.integration.ts",
-    "typecheck": "tsc --noEmit"
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@nav-reconciliation/injectors": "workspace:*",
+    "@nav-reconciliation/shared": "workspace:*",
     "@nav-reconciliation/nav-engine": "workspace:*",
-    "@nav-reconciliation/normalizer": "workspace:*",
-    "@nav-reconciliation/registry": "workspace:*",
-    "@nav-reconciliation/shared": "workspace:*"
+    "@prisma/client": "^5.0.0",
+    "bullmq": "^5.0.0",
+    "fastify": "^4.0.0",
+    "ioredis": "^5.0.0",
+    "zod": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "dotenv": "^16.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^1.6.0"
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0",
+    "prisma": "^5.0.0"
   }
 }
